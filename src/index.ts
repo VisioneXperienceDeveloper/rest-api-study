@@ -26,10 +26,8 @@ server.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
-const MONGO_URL = 'mongodb+srv://wjd516_db_user:XFCR1C9ABAM1ekuN@cluster0.tqutoet.mongodb.net/?appName=Cluster0';
-
 mongoose.Promise = Promise;
-mongoose.connect(MONGO_URL);
+mongoose.connect(process.env.MONGO_URL || '');
 mongoose.connection.on('error', (error: Error) => {
   console.log(error);
 });
